@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const ClientError = require("../../exception/ClientError");
 
 class NotesHandler {
@@ -92,7 +93,7 @@ class NotesHandler {
   async putNoteByIdHandler(request, h) {
     try {
       this._validator.validateNotePayload(request.payload);
-      
+
       const { id } = request.params;
 
       await this._service.editNoteById(id, request.payload);
