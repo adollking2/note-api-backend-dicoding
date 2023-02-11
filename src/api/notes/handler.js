@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
-const ClientError = require("../../exception/ClientError");
+const ClientError = require('../../exception/ClientError');
 
 class NotesHandler {
-  constructor(service,validator) {
+  constructor(service, validator) {
     this._service = service;
     this._validator = validator;
 
@@ -30,23 +30,23 @@ class NotesHandler {
       response.code(201);
       return response;
     } catch (error) {
-       if (error instanceof ClientError){
-          const response = h.response({
-            status: 'fail',
-            message: error.message,
-          });
-
-          response.code(error.statusCode);
-          return response;
-        }
+      if (error instanceof ClientError) {
         const response = h.response({
-          status: 'error',
-          message: 'Maaf, terjadi kegagalan pada server kami.',
+          status: 'fail',
+          message: error.message,
         });
-        response.code(500);
-        console.error(error);
-        return response;
 
+        response.code(error.statusCode);
+        return response;
+      }
+      const response = h.response({
+        status: 'error',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
+      });
+      response.code(500);
+      console.error(error);
+      // eslint-disable-next-line indent
+        return response;
     }
   }
 
@@ -71,7 +71,7 @@ class NotesHandler {
         },
       };
     } catch (error) {
-      if(error instanceof ClientError){
+      if (error instanceof ClientError) {
         const response = h.response({
           status: 'fail',
           message: error.message,

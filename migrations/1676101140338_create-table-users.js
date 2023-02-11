@@ -12,14 +12,16 @@ exports.up = (pgm) => {
     username: {
       type: 'VARCHAR(50)',
       notNull: true,
+      unique: true,
     },
     password: {
       type: 'TEXT',
       notNull: true,
     },
     fullname: {
-      type: 'VARCHAR(50)',
+      type: 'TEXT',
       notNull: true,
+      unique: true,
     },
   });
 };
