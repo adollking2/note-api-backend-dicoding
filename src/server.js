@@ -6,7 +6,6 @@ const NotesService = require('./services/inMemory/NotesService');
 const NoteService = require('./services/postgres/NoteService');
 const NotesValidator = require('./validator/notes');
 
-
 const init = async () => {
   const notesService = new NotesService();
   const server = Hapi.server({
